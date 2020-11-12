@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ItemEstoque index{% endblock %}
+
+{% block body %}
+    <h1>ItemEstoque index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IditemEstoque</th>
+                <th>NomeItem</th>
+                <th>Preco</th>
+                <th>Quantidade</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item_estoque in item_estoques %}
+            <tr>
+                <td>{{ item_estoque.iditemEstoque }}</td>
+                <td>{{ item_estoque.nomeItem }}</td>
+                <td>{{ item_estoque.preco }}</td>
+                <td>{{ item_estoque.quantidade }}</td>
+                <td>
+                    <a href="{{ path('item_estoque_show', {'iditemEstoque': item_estoque.iditemEstoque}) }}">show</a>
+                    <a href="{{ path('item_estoque_edit', {'iditemEstoque': item_estoque.iditemEstoque}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('item_estoque_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TipoEstabelecimento index{% endblock %}
+
+{% block body %}
+    <h1>TipoEstabelecimento index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdtipoEstabelecimento</th>
+                <th>Tipoestabelecimento</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tipo_estabelecimento in tipo_estabelecimentos %}
+            <tr>
+                <td>{{ tipo_estabelecimento.idtipoEstabelecimento }}</td>
+                <td>{{ tipo_estabelecimento.tipoestabelecimento }}</td>
+                <td>
+                    <a href="{{ path('tipo_estabelecimento_show', {'idtipoEstabelecimento': tipo_estabelecimento.idtipoEstabelecimento}) }}">show</a>
+                    <a href="{{ path('tipo_estabelecimento_edit', {'idtipoEstabelecimento': tipo_estabelecimento.idtipoEstabelecimento}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('tipo_estabelecimento_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ItemEstoque{% endblock %}
+
+{% block body %}
+    <h1>Create new ItemEstoque</h1>
+
+    {{ include('item_estoque/_form.html.twig') }}
+
+    <a href="{{ path('item_estoque_index') }}">back to list</a>
+{% endblock %}

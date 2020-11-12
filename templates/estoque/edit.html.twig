@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Estoque{% endblock %}
+
+{% block body %}
+    <h1>Edit Estoque</h1>
+
+    {{ include('estoque/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('estoque_index') }}">back to list</a>
+
+    {{ include('estoque/_delete_form.html.twig') }}
+{% endblock %}

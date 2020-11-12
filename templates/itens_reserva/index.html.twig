@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ItensReserva index{% endblock %}
+
+{% block body %}
+    <h1>ItensReserva index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IditensReserva</th>
+                <th>Nome</th>
+                <th>Preco</th>
+                <th>Tempo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for itens_reserva in itens_reservas %}
+            <tr>
+                <td>{{ itens_reserva.iditensReserva }}</td>
+                <td>{{ itens_reserva.nome }}</td>
+                <td>{{ itens_reserva.preco }}</td>
+                <td>{{ itens_reserva.tempo }}</td>
+                <td>
+                    <a href="{{ path('itens_reserva_show', {'iditensReserva': itens_reserva.iditensReserva}) }}">show</a>
+                    <a href="{{ path('itens_reserva_edit', {'iditensReserva': itens_reserva.iditensReserva}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('itens_reserva_new') }}">Create new</a>
+{% endblock %}

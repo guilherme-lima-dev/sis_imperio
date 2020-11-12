@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reserva{% endblock %}
+
+{% block body %}
+    <h1>Reserva</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idreserva</th>
+                <td>{{ reserva.idreserva }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('reserva_index') }}">back to list</a>
+
+    <a href="{{ path('reserva_edit', {'idreserva': reserva.idreserva}) }}">edit</a>
+
+    {{ include('reserva/_delete_form.html.twig') }}
+{% endblock %}

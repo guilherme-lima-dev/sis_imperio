@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ItemComanda index{% endblock %}
+
+{% block body %}
+    <h1>ItemComanda index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IditemComanda</th>
+                <th>NomeItem</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item_comanda in item_comandas %}
+            <tr>
+                <td>{{ item_comanda.iditemComanda }}</td>
+                <td>{{ item_comanda.nomeItem }}</td>
+                <td>
+                    <a href="{{ path('item_comanda_show', {'iditemComanda': item_comanda.iditemComanda}) }}">show</a>
+                    <a href="{{ path('item_comanda_edit', {'iditemComanda': item_comanda.iditemComanda}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('item_comanda_new') }}">Create new</a>
+{% endblock %}

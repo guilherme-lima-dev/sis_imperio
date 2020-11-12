@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ItensReserva{% endblock %}
+
+{% block body %}
+    <h1>Create new ItensReserva</h1>
+
+    {{ include('itens_reserva/_form.html.twig') }}
+
+    <a href="{{ path('itens_reserva_index') }}">back to list</a>
+{% endblock %}

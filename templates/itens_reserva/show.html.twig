@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ItensReserva{% endblock %}
+
+{% block body %}
+    <h1>ItensReserva</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IditensReserva</th>
+                <td>{{ itens_reserva.iditensReserva }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ itens_reserva.nome }}</td>
+            </tr>
+            <tr>
+                <th>Preco</th>
+                <td>{{ itens_reserva.preco }}</td>
+            </tr>
+            <tr>
+                <th>Tempo</th>
+                <td>{{ itens_reserva.tempo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('itens_reserva_index') }}">back to list</a>
+
+    <a href="{{ path('itens_reserva_edit', {'iditensReserva': itens_reserva.iditensReserva}) }}">edit</a>
+
+    {{ include('itens_reserva/_delete_form.html.twig') }}
+{% endblock %}

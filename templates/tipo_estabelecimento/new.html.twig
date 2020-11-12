@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TipoEstabelecimento{% endblock %}
+
+{% block body %}
+    <h1>Create new TipoEstabelecimento</h1>
+
+    {{ include('tipo_estabelecimento/_form.html.twig') }}
+
+    <a href="{{ path('tipo_estabelecimento_index') }}">back to list</a>
+{% endblock %}

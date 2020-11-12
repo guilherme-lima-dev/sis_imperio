@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Estabelecimento{% endblock %}
+
+{% block body %}
+    <h1>Estabelecimento</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idestabelecimento</th>
+                <td>{{ estabelecimento.idestabelecimento }}</td>
+            </tr>
+            <tr>
+                <th>NomeEstabelecimento</th>
+                <td>{{ estabelecimento.nomeEstabelecimento }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('estabelecimento_index') }}">back to list</a>
+
+    <a href="{{ path('estabelecimento_edit', {'idestabelecimento': estabelecimento.idestabelecimento}) }}">edit</a>
+
+    {{ include('estabelecimento/_delete_form.html.twig') }}
+{% endblock %}

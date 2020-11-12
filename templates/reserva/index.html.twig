@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reserva index{% endblock %}
+
+{% block body %}
+    <h1>Reserva index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idreserva</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reserva in reservas %}
+            <tr>
+                <td>{{ reserva.idreserva }}</td>
+                <td>
+                    <a href="{{ path('reserva_show', {'idreserva': reserva.idreserva}) }}">show</a>
+                    <a href="{{ path('reserva_edit', {'idreserva': reserva.idreserva}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('reserva_new') }}">Create new</a>
+{% endblock %}
