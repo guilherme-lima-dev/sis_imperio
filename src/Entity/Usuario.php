@@ -49,6 +49,12 @@ class Usuario implements UserInterface
     private $tipoUsuarioIdtipoUsuario;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $roles;
+
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Estabelecimento", inversedBy="usuarioIdfuncionario")
@@ -140,7 +146,13 @@ class Usuario implements UserInterface
 
     public function getRoles()
     {
-        return [];
+        return !$this->roles ? [] : explode(',', $this->roles);
+    }
+
+    public function setRoles($roles):Usuario
+    {
+        $this->roles = implode(',' , $roles);
+        return $this;
     }
 
     public function getPassword()
