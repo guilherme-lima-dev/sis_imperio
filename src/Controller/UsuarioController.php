@@ -34,11 +34,12 @@ class UsuarioController extends AbstractController
     public function new(Request $request): Response
     {
         $usuario = new Usuario();
-        $form = $this->createForm(UsuarioType::class, $usuario);
+        $form = $this->createForm(UsuarioType::class, $usuario, ['roles' => $usuario->getRoles()]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $usuario->setSenha(sha1(md5($usuario->getSenha())));
             $entityManager->persist($usuario);
             $entityManager->flush();
 
@@ -66,10 +67,12 @@ class UsuarioController extends AbstractController
      */
     public function edit(Request $request, Usuario $usuario): Response
     {
-        $form = $this->createForm(UsuarioType::class, $usuario);
+        $form = $this->createForm(UsuarioType::class, $usuario, ['roles' => $usuario->getRoles()]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $usuario->setSenha(sha1(md5($usuario->getSenha())));
+            $this->getDoctrine()->getManager()->persist($usuario);
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('usuario_index');

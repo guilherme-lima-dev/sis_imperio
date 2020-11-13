@@ -1,42 +1,78 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="pt-br">
 
-{% block title %}Log in!{% endblock %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>Dashio - Bootstrap Admin Template</title>
 
-{% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <!-- Bootstrap core CSS -->
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="/lib/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <!-- Custom styles for this template -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style-responsive.css" rel="stylesheet">
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+    <!-- =======================================================
+      Template Name: Dashio
+      Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
+      Author: TemplateMag.com
+      License: https://templatemag.com/license/
+    ======================================================= -->
+</head>
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputLogin">Login</label>
-    <input type="text" value="{{ last_username }}" name="login" id="inputLogin" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
+<body>
+<!-- **********************************************************************************************************************************************************
+    MAIN CONTENT
+    *********************************************************************************************************************************************************** -->
+<div id="login-page">
+    <div class="container">
+        <form class="form-login" method="post">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+            {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
+            <h2 class="form-login-heading">Área Restrita</h2>
+            <div class="login-wrap">
+                <input type="text" placeholder="Digite seu login..." value="{{ last_username }}" name="login"
+                       id="inputLogin" class="form-control" required autofocus>
+                <br>
+                <input type="password" placeholder="Digite sua senha..." name="password" id="inputPassword"
+                       class="form-control" required>
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
+                <span class="pull-right">
+                        <label class="checkbox">
+                            <input type="checkbox" name="_remember_me"> Lembrar de mim
+                        </label>
+                    </span>
+                <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i>
+                    ENTRAR
+                </button>
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
+            </div>
+        </form>
+    </div>
+</div>
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="lib/jquery.backstretch.min.js"></script>
+<script>
+    $.backstretch("img/login-bg.jpg", {
+        speed: 500
+    });
+</script>
+</body>
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
-{% endblock %}
+</html>
