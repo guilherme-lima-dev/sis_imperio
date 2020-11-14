@@ -1,35 +1,51 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}TipoUsuario index{% endblock %}
 
 {% block body %}
-    <h1>TipoUsuario index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>IdtipoUsuario</th>
-                <th>Tipousuario</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for tipo_usuario in tipo_usuarios %}
-            <tr>
-                <td>{{ tipo_usuario.idtipoUsuario }}</td>
-                <td>{{ tipo_usuario.tipousuario }}</td>
-                <td>
-                    <a href="{{ path('tipo_usuario_show', {'idtipoUsuario': tipo_usuario.idtipoUsuario}) }}">show</a>
-                    <a href="{{ path('tipo_usuario_edit', {'idtipoUsuario': tipo_usuario.idtipoUsuario}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('tipo_usuario_new') }}">Create new</a>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1 style="margin: 0;vertical-align: middle;line-height: 30px">Listagem de Tipos de Usuário</h1>
+            </div>
+            <div class="col-sm-6 text-right">
+                <a href="{{ path('tipo_usuario_new') }}" class="btn btn-success"><i class="fas fa-plus"></i>
+                    Cadastrar</a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <table class="table" id="tabela-index">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tipo de usuário</th>
+                            <th>Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for tipo_usuario in tipo_usuarios %}
+                            <tr>
+                                <td>{{ tipo_usuario.idtipoUsuario }}</td>
+                                <td>{{ tipo_usuario.tipousuario }}</td>
+                                <td>
+                                    <a class="btn btn-success btn-sm" href="{{ path('tipo_usuario_show', {'idtipoUsuario': tipo_usuario.idtipoUsuario}) }}">Ver</a>
+                                    <a class="btn btn-primary btn-sm" href="{{ path('tipo_usuario_edit', {'idtipoUsuario': tipo_usuario.idtipoUsuario}) }}">Editar</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="3">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

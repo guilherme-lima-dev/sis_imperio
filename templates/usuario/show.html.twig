@@ -1,30 +1,46 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Usuario{% endblock %}
 
 {% block body %}
-    <h1>Usuario</h1>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-6"><h1 style="margin: 0;vertical-align: middle;line-height: 30px;font-size: 29px"><span
+                            class="text-muted font-weight-light">Controle de Usuário / </span>Visualizar
+                    Usuário</h1></div>
+        </div>
+    </div>
+    <hr>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Idusuario</th>
-                <td>{{ usuario.idusuario }}</td>
-            </tr>
-            <tr>
-                <th>Login</th>
-                <td>{{ usuario.login }}</td>
-            </tr>
-            <tr>
-                <th>Senha</th>
-                <td>{{ usuario.senha }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>ID</th>
+                            <td>{{ usuario.idusuario }}</td>
+                        </tr>
+                        <tr>
+                            <th>Login</th>
+                            <td>{{ usuario.login }}</td>
+                        </tr>
+                        <tr>
+                            <th>Senha</th>
+                            <td>{{ usuario.senha }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-footer text-right">
+                    <a class="btn btn-default" href="{{ path('usuario_index') }}">Voltar à lista</a>
 
-    <a href="{{ path('usuario_index') }}">back to list</a>
+                    <a class="btn btn-primary" href="{{ path('usuario_edit', {'idusuario': usuario.idusuario}) }}">Editar</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <a href="{{ path('usuario_edit', {'idusuario': usuario.idusuario}) }}">edit</a>
-
-    {{ include('usuario/_delete_form.html.twig') }}
+{#    {{ include('usuario/_delete_form.html.twig') }}#}
 {% endblock %}

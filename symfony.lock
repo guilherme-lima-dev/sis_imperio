@@ -459,7 +459,7 @@
         "files": [
             "./config/packages/test/twig.yaml",
             "./config/packages/twig.yaml",
-            "./templates/base.html.twig"
+            "./templates/admin.html.twig"
         ]
     },
     "symfony/twig-pack": {

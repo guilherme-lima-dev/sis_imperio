@@ -16,18 +16,29 @@ class UsuarioType extends AbstractType
         $builder
             ->add('login')
             ->add('senha', PasswordType::class)
-            ->add('tipoUsuarioIdtipoUsuario')
-            ->add('estabelecimentoIdestabelecimento')
-        ;
-        if(in_array('ROLE_ADMIN', $options['roles'])){
-            $builder->add('roles', ChoiceType::class,[
-                'label' => 'Permissões:',
+            ->add('tipoUsuarioIdtipoUsuario', null, array(
+                'label' => 'Tipo de usuário',
+                'placeholder' => 'Selecione o tipo de usuário...',
+//                'attr' => array(
+//                    'class' => 'select2'
+//                )
+            ))
+            ->add('estabelecimentoIdestabelecimento', null, array(
+                'label' => 'Estabelecimento'
+            ));
+        if (in_array('ROLE_ADMIN', $options['roles'])) {
+            $builder->add('roles', ChoiceType::class, [
+                'label' => 'Permissões',
                 'multiple' => true,
                 'choices' => [
                     'Administrador' => 'ROLE_ADMIN',
                     'Funcionario' => 'ROLE_FUNCIONARIO',
                     'Cliente' => 'ROLE_CLIENTE',
-                ]
+                ],
+                'attr' => array(
+                    'class' => 'select2'
+                ),
+                'placeholder' => 'Selecione as permissões...',
             ]);
         }
     }

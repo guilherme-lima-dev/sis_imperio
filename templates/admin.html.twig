@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>Dashio - Bootstrap Admin Template</title>
+
+    <!-- Favicons -->
+    <link href="{{ asset('img/favicon.png') }}" rel="icon">
+    <link href="{{ asset('img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/zabuto_calendar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('lib/gritter/css/jquery.gritter.css') }}"/>
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style-responsive.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.10.0/sweetalert2.css"
+          integrity="sha512-i++eR2u4MtevO3tOPI55hNUccQVQ0+hf9cpevM2q/GmdM+UZMtzHn5pSxFmVuUK1kikm5qUiZB1ef6rWqLXb3Q=="
+          crossorigin="anonymous"/>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
+    <style>
+        hr {
+            border-color: rgba(0, 0, 0, .07);
+        }
+
+        .font-weight-light {
+            font-weight: 300 !important;
+        }
+
+        .swal2-popup {
+            font-size: 1.6rem !important;
+        }
+    </style>
+
+    <!-- =======================================================
+      Template Name: Dashio
+      Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
+      Author: TemplateMag.com
+      License: https://templatemag.com/license/
+    ======================================================= -->
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<section id="container">
+    <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+        </div>
+        <!--logo start-->
+        <a href="index.html" class="logo"><b>DASH<span>IO</span></b></a>
+        <!--logo end-->
+        <div class="top-menu">
+            <ul class="nav pull-right top-menu">
+                <li><a class="logout" href="{{ path('app_logout') }}">Logout</a></li>
+            </ul>
+        </div>
+    </header>
+    <!--header end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+                <p class="centered"><a href="profile.html"><img src="{{ asset('img/ui-sam.jpg') }}" class="img-circle"
+                                                                width="80"></a>
+                </p>
+                {% if app.user %}
+                    <h5 class="centered">{{ app.user.username }}</h5>
+                {% endif %}
+                <li class="mt">
+                    <a class="active" href="index.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fas fa-users-cog"></i>
+                        <span>Usuários</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="{{ path('usuario_index') }}">Manter Usuário</a></li>
+                        <li><a href="{{ path('tipo_usuario_index') }}">Manter Tipo de Usuário</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+</section>
+<section id="main-content">
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                {% include 'alertas.html.twig' %}
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </section>
+</section>
+{#<section class="wrapper">#}
+{#    <div class="row">#}
+<footer class="site-footer" style="margin-top: 200px">
+    <div class="text-center">
+        <p>
+            &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
+        </p>
+        <div class="credits">
+            <!--
+              You are NOT allowed to delete the credit link to TemplateMag with free version.
+              You can delete the credit link only if you bought the pro version.
+              Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
+              Licensing information: https://templatemag.com/license/
+            -->
+            Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
+        </div>
+        {#        <a href="index.html#" class="go-top">#}
+        {#            <i class="fa fa-angle-up"></i>#}
+        {#        </a>#}
+    </div>
+</footer>
+{#    </div>#}
+{#</section>#}
+<script src="{{ asset('lib/jquery/jquery-3.5.1.min.js') }}"></script>
+<script src="{{ asset('lib/chart-master/Chart.js') }}"></script>
+<script src="https://kit.fontawesome.com/1dbc7d90aa.js" crossorigin="anonymous"></script>
+<script src="{{ asset('lib/bootstrap/js/bootstrap.min.js') }}"></script>
+<script class="include" type="text/javascript" src="{{ asset('lib/jquery.dcjqaccordion.2.7.js') }}"></script>
+<script src="{{ asset('lib/jquery.scrollTo.min.js') }}"></script>
+<script src="{{ asset('lib/jquery.nicescroll.js') }}" type="text/javascript"></script>
+<script src="{{ asset('lib/jquery.sparkline.js') }}"></script>
+<!--common script for all pages-->
+<script src="{{ asset('lib/common-scripts.js') }}"></script>
+<script type="text/javascript" src="{{ asset('lib/gritter/js/jquery.gritter.js') }}"></script>
+<script type="text/javascript" src="{{ asset('lib/gritter-conf.js') }}"></script>
+<!--script for this page-->
+<script src="{{ asset('lib/sparkline-chart.js') }}"></script>
+<script src="{{ asset('lib/zabuto_calendar.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.10.0/sweetalert2.all.js"
+        integrity="sha512-e7ZAMyNHTG4vWygAvkLIUNjAiuDvZBjIFvPVp48c138M6bLcP+WN7xJr9rxg61nfTjMvGuEzOLgnoYNnT3kzzQ=="
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('#tabela-index').DataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese-Brasil.json'
+            },
+            {% if app.request.get('_route') == 'usuario_index' %}
+            columnDefs: [{
+                targets: 3,
+                orderable: false
+            }],
+            {% elseif app.request.get('_route') == 'tipo_usuario_index' %}
+            columnDefs: [{
+                targets: 2,
+                orderable: false
+            }],
+            {% endif %}
+        });
+        $('.select2').select2();
+    });
+</script>
+</body>
+</html>

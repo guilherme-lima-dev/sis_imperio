@@ -1,26 +1,47 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}TipoUsuario{% endblock %}
 
 {% block body %}
-    <h1>TipoUsuario</h1>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-6"><h1 style="margin: 0;vertical-align: middle;line-height: 30px;font-size: 29px"><span
+                            class="text-muted font-weight-light">Controle de Tipo de Usuário / </span>Visualizar
+                    Tipo de Usuário</h1></div>
+        </div>
+    </div>
+    <hr>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>IdtipoUsuario</th>
-                <td>{{ tipo_usuario.idtipoUsuario }}</td>
-            </tr>
-            <tr>
-                <th>Tipousuario</th>
-                <td>{{ tipo_usuario.tipousuario }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('tipo_usuario_index') }}">back to list</a>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>ID</th>
+                            <td>{{ tipo_usuario.idtipoUsuario }}</td>
+                        </tr>
+                        <tr>
+                            <th>Tipo de usuário</th>
+                            <td>{{ tipo_usuario.tipousuario }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    <a class="btn btn-default" href="{{ path('tipo_usuario_index') }}">Voltar à lista</a>
 
-    <a href="{{ path('tipo_usuario_edit', {'idtipoUsuario': tipo_usuario.idtipoUsuario}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('tipo_usuario_edit', {'idtipoUsuario': tipo_usuario.idtipoUsuario}) }}">Editar</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    {{ include('tipo_usuario/_delete_form.html.twig') }}
+
+
+
+
+{#    {{ include('tipo_usuario/_delete_form.html.twig') }}#}
 {% endblock %}

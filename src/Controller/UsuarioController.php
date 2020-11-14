@@ -42,7 +42,7 @@ class UsuarioController extends AbstractController
             $usuario->setSenha(sha1(md5($usuario->getSenha())));
             $entityManager->persist($usuario);
             $entityManager->flush();
-
+            $this->addFlash('success', 'O item foi criado com sucesso.');
             return $this->redirectToRoute('usuario_index');
         }
 
@@ -75,6 +75,8 @@ class UsuarioController extends AbstractController
             $this->getDoctrine()->getManager()->persist($usuario);
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'O item foi atualizado com sucesso.');
+
             return $this->redirectToRoute('usuario_index');
         }
 
@@ -89,12 +91,12 @@ class UsuarioController extends AbstractController
      */
     public function delete(Request $request, Usuario $usuario): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$usuario->getIdusuario(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $usuario->getIdusuario(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($usuario);
             $entityManager->flush();
         }
-
+        $this->addFlash('success', 'O item foi excluído com sucesso.');
         return $this->redirectToRoute('usuario_index');
     }
 }

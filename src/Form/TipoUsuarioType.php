@@ -12,8 +12,9 @@ class TipoUsuarioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tipousuario')
-        ;
+            ->add('tipousuario', null, array(
+                'label' => 'Tipo de usuário',
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

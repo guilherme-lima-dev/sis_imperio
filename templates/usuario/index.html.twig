@@ -1,37 +1,59 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Usuario index{% endblock %}
 
 {% block body %}
-    <h1>Usuario index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Idusuario</th>
-                <th>Login</th>
-                <th>Senha</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for usuario in usuarios %}
-            <tr>
-                <td>{{ usuario.idusuario }}</td>
-                <td>{{ usuario.login }}</td>
-                <td>{{ usuario.senha }}</td>
-                <td>
-                    <a href="{{ path('usuario_show', {'idusuario': usuario.idusuario}) }}">show</a>
-                    <a href="{{ path('usuario_edit', {'idusuario': usuario.idusuario}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('usuario_new') }}">Create new</a>
+    <style>
+        .hidetext {
+            -webkit-text-security: disc;
+        }
+    </style>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1 style="margin: 0;vertical-align: middle;line-height: 30px">Listagem de Usuário</h1>
+            </div>
+            <div class="col-sm-6 text-right">
+                <a href="{{ path('usuario_new') }}" class="btn btn-success"><i class="fas fa-plus"></i> Cadastrar</a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <table class="table" id="tabela-index">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Login</th>
+                            <th>Senha</th>
+                            <th>Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for usuario in usuarios %}
+                            <tr>
+                                <td>{{ usuario.idusuario }}</td>
+                                <td>{{ usuario.login }}</td>
+                                <td class="hidetext">{{ usuario.senha }}</td>
+                                <td>
+                                    <a class="btn btn-success btn-sm"
+                                       href="{{ path('usuario_show', {'idusuario': usuario.idusuario}) }}">Ver</a>
+                                    <a class="btn btn-primary btn-sm"
+                                       href="{{ path('usuario_edit', {'idusuario': usuario.idusuario}) }}">Editar</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

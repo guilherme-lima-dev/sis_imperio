@@ -10,12 +10,12 @@
     <title>Dashio - Bootstrap Admin Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <!--external css-->
-    <link href="/lib/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link href="{{ asset('lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet"/>
     <!-- Custom styles for this template -->
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="/css/style-responsive.css" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style-responsive.css') }}" rel="stylesheet">
 
     <!-- =======================================================
       Template Name: Dashio
@@ -48,15 +48,13 @@
                 <br>
                 <input type="password" placeholder="Digite sua senha..." name="password" id="inputPassword"
                        class="form-control" required>
-                <input type="hidden" name="_csrf_token"
-                       value="{{ csrf_token('authenticate') }}"
-                >
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
                 <span class="pull-right">
                         <label class="checkbox">
                             <input type="checkbox" name="_remember_me"> Lembrar de mim
                         </label>
-                    </span>
+                </span>
                 <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i>
                     ENTRAR
                 </button>
@@ -65,9 +63,9 @@
         </form>
     </div>
 </div>
-<script src="lib/jquery/jquery.min.js"></script>
-<script src="lib/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="lib/jquery.backstretch.min.js"></script>
+<script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('lib/bootstrap/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('lib/jquery.backstretch.min.js') }}"></script>
 <script>
     $.backstretch("img/login-bg.jpg", {
         speed: 500
