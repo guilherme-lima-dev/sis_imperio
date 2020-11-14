@@ -69,6 +69,11 @@ class Usuario implements UserInterface
      */
     private $estabelecimentoIdestabelecimento;
 
+    public function __toString()
+    {
+        return $this->login;
+    }
+
     /**
      * Constructor
      */

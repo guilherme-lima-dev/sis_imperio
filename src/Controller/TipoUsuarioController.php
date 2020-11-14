@@ -41,7 +41,7 @@ class TipoUsuarioController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($tipoUsuario);
             $entityManager->flush();
-
+            $this->addFlash('success', 'O item foi criado com sucesso.');
             return $this->redirectToRoute('tipo_usuario_index');
         }
 
@@ -71,7 +71,7 @@ class TipoUsuarioController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'O item foi atualizado com sucesso.');
             return $this->redirectToRoute('tipo_usuario_index');
         }
 
@@ -86,12 +86,12 @@ class TipoUsuarioController extends AbstractController
      */
     public function delete(Request $request, TipoUsuario $tipoUsuario): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$tipoUsuario->getIdtipoUsuario(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $tipoUsuario->getIdtipoUsuario(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($tipoUsuario);
             $entityManager->flush();
         }
-
+        $this->addFlash('success', 'O item foi excluído com sucesso.');
         return $this->redirectToRoute('tipo_usuario_index');
     }
 }

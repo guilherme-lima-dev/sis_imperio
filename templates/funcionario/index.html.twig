@@ -1,47 +1,60 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}Funcionario index{% endblock %}
 
 {% block body %}
-    <h1>Funcionario index</h1>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1 style="margin: 0;vertical-align: middle;line-height: 30px">Listagem de Funcionários</h1>
+            </div>
+            <div class="col-sm-6 text-right">
+                <a href="{{ path('funcionario_new') }}" class="btn btn-success"><i class="fas fa-plus"></i>
+                    Cadastrar</a>
+            </div>
+        </div>
+    </div>
+    <hr>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Idfuncionarios</th>
-                <th>Nome</th>
-                <th>Cpf</th>
-                <th>Endereco</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>Foto</th>
-                <th>Documento</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for funcionario in funcionarios %}
-            <tr>
-                <td>{{ funcionario.idfuncionarios }}</td>
-                <td>{{ funcionario.nome }}</td>
-                <td>{{ funcionario.cpf }}</td>
-                <td>{{ funcionario.endereco }}</td>
-                <td>{{ funcionario.email }}</td>
-                <td>{{ funcionario.telefone }}</td>
-                <td>{{ funcionario.foto }}</td>
-                <td>{{ funcionario.documento }}</td>
-                <td>
-                    <a href="{{ path('funcionario_show', {'idfuncionarios': funcionario.idfuncionarios}) }}">show</a>
-                    <a href="{{ path('funcionario_edit', {'idfuncionarios': funcionario.idfuncionarios}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('funcionario_new') }}">Create new</a>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <table class="table" id="tabela-index">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Endereco</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>Foto</th>
+                            <th>Documento</th>
+                            <th>Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for funcionario in funcionarios %}
+                            <tr>
+                                <td>{{ funcionario.idfuncionarios }}</td>
+                                <td>{{ funcionario.nome }}</td>
+                                <td>{{ funcionario.cpf }}</td>
+                                <td>{{ funcionario.endereco }}</td>
+                                <td>{{ funcionario.email }}</td>
+                                <td>{{ funcionario.telefone }}</td>
+                                <td>{{ funcionario.foto }}</td>
+                                <td>{{ funcionario.documento }}</td>
+                                <td>
+                                    <a class="btn btn-success btn-sm" href="{{ path('funcionario_show', {'idfuncionarios': funcionario.idfuncionarios}) }}">Ver</a>
+                                    <a class="btn btn-primary btn-sm" href="{{ path('funcionario_edit', {'idfuncionarios': funcionario.idfuncionarios}) }}">Editar</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

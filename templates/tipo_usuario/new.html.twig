@@ -1,11 +1,42 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
 {% block title %}New TipoUsuario{% endblock %}
 
 {% block body %}
-    <h1>Create new TipoUsuario</h1>
+    {#    <h1>Create new TipoUsuario</h1>#}
 
-    {{ include('tipo_usuario/_form.html.twig') }}
 
-    <a href="{{ path('tipo_usuario_index') }}">back to list</a>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-6"><h1 style="margin: 0;vertical-align: middle;line-height: 30px;font-size: 29px"><span
+                            class="text-muted font-weight-light">Controle de Tipo de Usuário / </span>Cadastrar Tipo de
+                    Usuário</h1>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel">
+                {{ form_start(form) }}
+                <div class="panel-body">
+                    {{ form_widget(form) }}
+                </div>
+                <div class="panel-footer">
+                    <a class="btn btn-default" href="{{ path('tipo_usuario_index') }}">Voltar à lista</a>
+                    <button type="submit" class="btn btn-primary">{{ button_label|default('Salvar') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+            integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+            crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tipo_usuario_tipousuario').val('');
+        });
+    </script>
+
 {% endblock %}

@@ -21,4 +21,12 @@ class HomeController extends AbstractController
         }
         return $this->redirectToRoute('app_login');
     }
+
+    /**
+     * @Route("/dashboard", name="dashboard", methods={"GET"})
+     */
+    public function dashboard(Request $request): Response
+    {
+        return $this->render('home/dashboard.html.twig');
+    }
 }
